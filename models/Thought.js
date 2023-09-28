@@ -31,7 +31,7 @@ const thoughtSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            defualt: () => new Date(),
+            defualt: Date.now(),
             get: (date) => {
                 return date.toLocaleString();
             },
