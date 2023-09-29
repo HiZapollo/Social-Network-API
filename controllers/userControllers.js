@@ -1,18 +1,3 @@
-/* 
-
-route /api/users
-    - GET all users
-    - GET a single user by _id and populated thought and friend data
-    - POST a new user
-    - PUT to update a user by _id
-    - DELETE to remove a user by _id
-
-/api/users/:user_id/friends/:friendId
-    - POST to add a new friend to a user's friend list
-    - DELETE to remove a friend from a user's friend list
-
-*/
-
 const { User, Thought } = require('../models');
 
 module.exports = {
@@ -20,6 +5,7 @@ module.exports = {
     async getUsers(req, res) {
         try {
             const users = await User.find();
+
             res.json(users);
         } catch (err) {
             res.status(500).json(err);
@@ -31,7 +17,7 @@ module.exports = {
             const user = await User.findOne({ _id: req.params.userId });
 
             if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+                return res.status(404).json({ message: 'No user with this id!' });
             }
 
             res.json(user);
@@ -46,7 +32,6 @@ module.exports = {
             res.json(user);
         } catch (err) {
             res.status(500).json(err);
-            return res.status(500).json(err);
         }
     },
     // PUT to update user
