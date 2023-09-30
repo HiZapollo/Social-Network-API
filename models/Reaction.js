@@ -1,24 +1,3 @@
-/* Reaction Schema
-
-    1. reactionId
-        - Use Mongoose's ObjectId datatype
-        - Default value is set to a new ObjectId
-    2. reactionBody
-        - String
-        - Required
-        - 280 max char
-    3. username
-        - String
-        - Required
-    4. createdAt
-        - Date
-        - Set defualt val to current timestamp
-        - Use getter method to format timestamp on query
-    
-Not a model, used as reaction field's subdocument in the Thought model 
-
-*/
-
 const { Schema, Types } = require('mongoose');
 
 const reactionSchema = new Schema(
@@ -40,10 +19,16 @@ const reactionSchema = new Schema(
             type: Date,
             defualt: Date.now(),
             get: (date) => {
-                return date.toLocaleString();
+                date.toLocaleString();
             },
         }
-        
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+        _id: false,
+        timestamps: { createdAt: true, updatedAt: false },
     }
 );
 

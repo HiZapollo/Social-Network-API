@@ -1,23 +1,3 @@
-/* Thought Model
-
-    1. thoughtText
-        - String
-        - Required
-        - 1-280 chars
-    2. createdAt
-        - Date
-        - Set defualt val to current timestamp
-        - Use getter method to format timestamp on query
-    3. username
-        - String
-        - Required
-    4. reactions
-        - Array of nested documents created with the reactionSchema
-
-Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
-
-*/
-
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 
@@ -45,7 +25,10 @@ const thoughtSchema = new Schema(
     {
         toJSON: {
             getters: true,
+            virtuals: true,
         },
+        id: false,
+        timestamps: { createdAt: true, updatedAt: false },
     }
 );
 
