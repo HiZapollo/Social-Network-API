@@ -12,7 +12,7 @@ Clone/download the repo, run "npm install" in the command line, then run "npm st
 
 After running the application, using any API client you can run the routes found in the controllers files. A runthrough of all these routes can be seen in the video below:
 
-[Example Video]
+[Example Video](https://drive.google.com/file/d/16j_WacPdQruc8C7wpOnAC8yFEu737OkK/view)
 
 ## Credits
 
